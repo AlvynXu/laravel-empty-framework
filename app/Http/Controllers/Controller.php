@@ -10,4 +10,13 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function __construct()
+    {
+    }
+
+    public function getUid()
+    {
+        return ($user = auth('api')->user()) ? $user->ID : 0;
+    }
 }
